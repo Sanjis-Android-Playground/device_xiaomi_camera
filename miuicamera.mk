@@ -11,6 +11,11 @@ CAMERA_VENDOR_PATH := vendor/xiaomi/camera
 PRODUCT_COPY_FILES += \
      $(call find-copy-subdir-files,*,$(CAMERA_PATH)/configs/permissions/,$(TARGET_COPY_OUT_SYSTEM)/etc)
 
+# ExtraPhotoGlobal is a product app, so its allowlist is installed to /product by the
+# privapp-permissions-extraphoto.xml prebuilt_etc module in Android.bp instead.
+PRODUCT_PACKAGES += \
+    privapp-permissions-extraphoto.xml
+
 # CameraX Config Overwrite
 PRODUCT_COPY_FILES += \
      $(CAMERA_PATH)/configs/camera/camxoverridesettings.txt:$(TARGET_COPY_OUT_VENDOR)/etc/camera/camxoverridesettings.txt

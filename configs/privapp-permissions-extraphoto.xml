@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+This XML file declares which signature|privileged permissions should be granted to privileged
+applications that come with the miui
+
+ExtraPhotoGlobal installs to /product/priv-app, so its allowlist has to live on the
+product partition. SystemConfig scopes privapp allowlists per partition, and a grant
+read from /system cannot be applied to a product app.
+-->
+<permissions>
+    <privapp-permissions package="com.miui.extraphoto">
+        <permission name="android.permission.WRITE_MEDIA_STORAGE"/>
+    </privapp-permissions>
+</permissions>

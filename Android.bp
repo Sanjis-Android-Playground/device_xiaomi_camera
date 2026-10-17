@@ -46,3 +46,14 @@ install_symlink {
     installed_location: "priv-app/MiuiCamera/lib/arm64/libopencl-camera.so",
     symlink_target: "/system/lib64/libopencl-camera.so",
 }
+
+// ExtraPhotoGlobal is installed to /product/priv-app, so its privileged permission
+// allowlist must be read from the product partition. SystemConfig keeps a separate
+// allowlist per partition, and grants read from /system are not visible to product
+// apps, which makes the build abort in system_server at boot.
+prebuilt_etc {
+    name: "privapp-permissions-extraphoto.xml",
+    src: "configs/privapp-permissions-extraphoto.xml",
+    sub_dir: "permissions",
+    product_specific: true,
+}

@@ -24,10 +24,6 @@ applications that come with the miui
         <permission name="android.permission.PACKAGE_USAGE_STATS"/>
     </privapp-permissions>
 
-    <privapp-permissions package="com.miui.extraphoto">
-        <permission name="android.permission.WRITE_MEDIA_STORAGE"/>
-    </privapp-permissions>
-
     <privapp-permissions package="com.xiaomi.scanner">
         <permission name="android.permission.CHANGE_CONFIGURATION"/>
         <permission name="android.permission.OVERRIDE_WIFI_CONFIG"/>

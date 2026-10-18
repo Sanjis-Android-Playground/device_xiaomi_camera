@@ -27,12 +27,21 @@ PRODUCT_COPY_FILES += \
      $(CAMERA_PATH)/configs/camera/camxoverridesettings.txt:$(TARGET_COPY_OUT_VENDOR)/etc/camera/camxoverridesettings.txt
 
 # Camera Extensions
-PRODUCT_SYSTEM_PROPERTIES += \
-    ro.camerax.extensions.enabled=true
-
-# Camera Extensions permissions
-PRODUCT_COPY_FILES += \
-    $(CAMERA_PATH)/configs/permissions/extensions/camerax-vendor-extensions.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/camerax-vendor-extensions.xml
+#
+# Nothing here. ro.camerax.extensions.enabled and the matching
+# camerax-vendor-extensions.xml library declaration were both dropped: they
+# advertised a CameraX extension implementation that this device never had.
+#
+# The jar was listed in proprietary-files.txt as
+# system_ext/framework/camerax-vendor-extensions.jar, but it was never
+# extracted and is absent from the vendor dump, so SystemConfig rejected the
+# declaration every boot:
+#
+#   Ignore shared library camerax-vendor-extensions.jar:
+#   /system/framework/camerax-vendor-extensions.jar does not exist
+#
+# MiuiCamera declares no uses-library at all, so it never consumed the jar. Set
+# the property again only together with a jar that actually exists.
 
 # Device-Features
 PRODUCT_COPY_FILES += \

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ExtraPhotoGlobal declares <uses-library android:name="gson.jar"/>.
+
+  The jar is shipped to /system_ext/framework/gson.jar by camera-vendor.mk, but
+  nothing declared it as a shared library, so PackageManager refused to link it:
+
+    updateAllSharedLibrariesLPw failed: Package com.miui.extraphoto requires
+    unavailable shared library gson.jar; failing!
+
+  The app was then marked as failed and never loaded.
+-->
+<permissions>
+    <library
+        name="gson.jar"
+        file="/system_ext/framework/gson.jar"/>
+</permissions>

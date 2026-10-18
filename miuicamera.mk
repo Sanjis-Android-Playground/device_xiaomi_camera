@@ -16,6 +16,12 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     privapp-permissions-extraphoto.xml
 
+# ExtraPhotoGlobal declares <uses-library android:name="gson.jar"/>, and the jar is
+# shipped to /system_ext/framework by camera-vendor.mk. Nothing declared it as a
+# shared library, so PackageManager refused to link it and the app was dropped.
+PRODUCT_COPY_FILES += \
+    $(CAMERA_PATH)/configs/gson.xml:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/permissions/gson.xml
+
 # CameraX Config Overwrite
 PRODUCT_COPY_FILES += \
      $(CAMERA_PATH)/configs/camera/camxoverridesettings.txt:$(TARGET_COPY_OUT_VENDOR)/etc/camera/camxoverridesettings.txt
